@@ -1,0 +1,506 @@
+.filters {
+  display: flex;
+  gap: 1.5em;
+  margin: 1em 0;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filters label {
+  font-size: 1em;
+}
+.filters select {
+  padding: 0.3em;
+  font-size: 1em;
+}
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background-color: white;
+  padding: 2em;
+  border-radius: 10px;
+  position: relative;
+  width: 400px;
+  max-width: 90%;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.account-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.account-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.modal-content {
+  background: white;
+  padding: 2em;
+  border-radius: 10px;
+  width: 320px;
+  max-width: 90%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.logout-btn,
+.close-btn {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+
+.account-icon {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.account-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.account-icon img:hover {
+  transform: scale(1.1);
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+
+.booking-controls {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-top: 0.5em;
+}
+
+.ticket-quantity {
+  padding: 0.3em;
+  font-size: 1em;
+}
+
+.cancel-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.6em 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+  width: 160px;                 /* однакова ширина */
+  text-align: center;
+}
+
+.cancel-btn:hover {
+  background-color: #c0392b;
+}
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+header, footer {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  margin-bottom: 1em;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 1em;
+  flex: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1em;
+}
+
+.event-card {
+  background-color: white;
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.event-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5em;
+}
+
+.event-banner-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1em;
+}
+
+.event-banner {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 1em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-banner:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.event-banner img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.event-banner-info h3 {
+  margin-top: 0;
+}
+
+.event-banner-info p {
+  margin: 0.3em 0;
+}
+
+.booking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1em;
+}
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center; /* Центруємо картки */
+  margin: 1rem 0; /* відступ зверху/знизу, щоби не «лилипилися» до країв */
+}
+
+.event-card {
+  width: 260px; /* фіксована ширина картки */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+.event-card img {
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+
+.booking-controls {
+  margin: 1rem 0;
+}
+.booking-controls select {
+  padding: 0.2rem;
+}
+.booking-controls button {
+  margin-left: 1rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.rating-controls {
+  margin-top: 1rem;
+}
+.rating-controls select {
+  padding: 0.2rem;
+}
+.rating-controls button {
+  margin-left: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.booking-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* ⬅️ Це розтягне контент на всю ширину */
+  gap: 1.5em;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+}
+
+.booking-item img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.booking-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* ⬅️ щоб назва була зверху */
+  flex: 1;
+  gap: 1em;
+}
+
+
+
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4em;
+  flex: 1;
+}
+
+.booking-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.booking-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+
+.booking-info h3 {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.booking-info p {
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+.booking-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* 🔸 прибиває до правого краю */
+  justify-content: center;
+  gap: 0.5em;
+  min-width: 180px;
+  margin-left: auto;         /* 🔥 ось це забезпечує "прилипання" до краю */
+}
+
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .event-card {
+    font-size: 0.95em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .event-banner img {
+    width: 100%;
+    height: auto;
+  }
+
+  .booking-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .booking-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .booking-info p,
+  .booking-info h3,
+  .booking-status {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .event-card,
+  .booking-item {
+    padding: 1em;
+    font-size: 0.95em;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav a {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+  }
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.booking-summary {
+  padding: 1em;
+  margin: 2em 1em;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+nav button {
+  background: transparent;
+  color: white;
+  font-size: 1.1em;
+  padding: 0.4em 1em;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+nav button:hover {
+  border-bottom: 2px solid white;
+}
+
+nav button.active {
+  border-bottom: 2px solid white;
+}
+
