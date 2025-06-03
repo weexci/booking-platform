@@ -7,7 +7,9 @@ export default function EventList({
   onBook,
   quantities,
   onQuantityChange,
-  openLoginModal,
+  openLoginModal, // очікуємо саме цей пропс
+  user,
+  onRate,
 }) {
   return (
     <div
@@ -24,7 +26,9 @@ export default function EventList({
           quantities={quantities}
           onQuantityChange={onQuantityChange}
           onBook={onBook}
-          openLoginModal={openLoginModal}
+          openLoginModal={openLoginModal} // передаємо далі
+          user={user}
+          onRate={onRate}
         />
       ))}
     </div>

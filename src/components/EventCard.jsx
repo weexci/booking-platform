@@ -7,23 +7,28 @@ export default function EventCard({
   quantities,
   onQuantityChange,
   onBook,
-  openLoginModal,
+  openLoginModal, // тепер приходить саме цей колбек
+  user,
+  onRate,
 }) {
-  const [user, setUser] = useState(null);
   const [ratings, setRatings] = useState([]);
   const [avgRating, setAvgRating] = useState(null);
   const [userRating, setUserRating] = useState(null);
   const [selectedScore, setSelectedScore] = useState(1);
   const [loadingRatings, setLoadingRatings] = useState(true);
 
+  // Підписка на зміни аутентифікації, щоб відображати user
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = auth.onAuthStateChanged((u) => {
-      setUser(u);
+      // Просто спрацьовує повторне рендерення, щоби застосувати user у JSX
+      // actual setUser здійснюється у App.js, тут лише слідкуємо за зміною
+      // Ви можете лишити цей блок, або прибрати взагалі – у нас user вже передано зверху
     });
     return unsubscribe;
   }, []);
 
+  // Підвантаження всіх оцінок для цієї події
   useEffect(() => {
     async function fetchRatings() {
       setLoadingRatings(true);
@@ -41,7 +46,7 @@ export default function EventCard({
           },
         });
         if (!res.ok) {
-          throw new Error(`HTTP error: ${res.status}`);
+          throw new Error(`HTTP помилка: ${res.status}`);
         }
         const data = await res.json();
         setRatings(data);
@@ -104,8 +109,8 @@ export default function EventCard({
         throw new Error(err.error || "Не вдалося надіслати рейтинг");
       }
 
-      // Примусово оновимо useEffect:
-      setUser({ ...user });
+      // Примусово оновимо useEffect, спровокувавши повторне завантаження
+      setUserRating(selectedScore);
     } catch (err) {
       console.error("Помилка відправки рейтингу:", err);
       alert("Не вдалося зберегти оцінку: " + err.message);
@@ -161,7 +166,7 @@ export default function EventCard({
         <button
           onClick={() => {
             if (!user) {
-              openLoginModal();
+              openLoginModal(); // якщо не залогінений
             } else {
               onBook(event);
             }
@@ -182,7 +187,7 @@ export default function EventCard({
           {avgRating !== null ? (
             <p>
               <strong>Середній рейтинг:</strong> {avgRating} / 5 (
-              {ratings.length} {"оцінок"})
+              {ratings.length} оцінок)
             </p>
           ) : (
             <p>Поки що оцінок немає</p>
@@ -191,7 +196,9 @@ export default function EventCard({
           {!user ? (
             <button onClick={openLoginModal}>Увійдіть, щоб оцінити</button>
           ) : (
-            <div style={{ display: "flex", alignItems: "center", marginTop: "4px" }}>
+            <div
+              style={{ display: "flex", alignItems: "center", marginTop: "4px" }}
+            >
               <label style={{ marginRight: "8px" }}>
                 Ваша оцінка:
                 <select
