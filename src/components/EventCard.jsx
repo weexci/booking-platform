@@ -178,49 +178,6 @@ export default function EventCard({
       </div>
 
       <hr style={{ margin: "12px 0" }} />
-
-      {/* --------------- Блок рейтингу починається тут --------------- */}
-      {loadingRatings ? (
-        <p>Завантаження оцінок…</p>
-      ) : (
-        <div>
-          {avgRating !== null ? (
-            <p>
-              <strong>Середній рейтинг:</strong> {avgRating} / 5 (
-              {ratings.length} оцінок)
-            </p>
-          ) : (
-            <p>Поки що оцінок немає</p>
-          )}
-
-          {!user ? (
-            <button onClick={openLoginModal}>Увійдіть, щоб оцінити</button>
-          ) : (
-            <div
-              style={{ display: "flex", alignItems: "center", marginTop: "4px" }}
-            >
-              <label style={{ marginRight: "8px" }}>
-                Ваша оцінка:
-                <select
-                  value={selectedScore}
-                  onChange={handleScoreChange}
-                  style={{ marginLeft: "4px" }}
-                >
-                  {[1, 2, 3, 4, 5].map((n) => (
-                    <option key={n} value={n}>
-                      {n}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <button onClick={handleSubmitRating}>
-                {userRating === null ? "Оцінити" : "Змінити"}
-              </button>
-            </div>
-          )}
-        </div>
-      )}
-      {/* --------------- Кінець блоку рейтингу --------------- */}
     </div>
   );
 }
