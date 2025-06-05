@@ -173,7 +173,7 @@ export default function EventCard({
           }}
           style={{ marginLeft: "auto" }}
         >
-          Забронювати квиток
+          Забронювати
         </button>
       </div>
 
