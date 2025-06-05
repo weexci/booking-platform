@@ -143,7 +143,6 @@ export default function EventCard({
       <h3 style={{ margin: "8px 0 4px" }}>{event.title}</h3>
       <p style={{ margin: "2px 0" }}>Дата: {event.date}</p>
       <p style={{ margin: "2px 0" }}>Місце: {event.place}</p>
-      <p style={{ margin: "2px 0" }}>Ціна: {event.price} грн</p>
 
       {/* Блок бронювання */}
       <div style={{ marginTop: "8px", display: "flex", alignItems: "center" }}>
